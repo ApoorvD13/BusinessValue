@@ -4,3 +4,4 @@ shapely<2.0.0
 PyMuPDF
 google-cloud-storage
 reportlab
+
