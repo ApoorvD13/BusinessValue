@@ -3,6 +3,7 @@ from google.oauth2 import service_account
 import google.auth
 from google.auth.transport.requests import Request
 
+#changes made for verificatiom
 os.environ["PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION"] = "python"
 # Specify the path to your JSON key file
 key_path = "D:/FYProject/annular-cogency-397714-32d3bfc578fc.json"
