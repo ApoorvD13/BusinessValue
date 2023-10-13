@@ -1,34 +1,6 @@
 
 
-import os
-from google.oauth2 import service_account
-import google.auth
-from google.auth.transport.requests import Request
 
-os.environ["PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION"] = "python"
-# Specify the path to your JSON key file
-key_path = "D:/FYProject/annular-cogency-397714-32d3bfc578fc.json"
-
-# Load the credentials
-credentials = service_account.Credentials.from_service_account_file(key_path)
-
-# Use the credentials for authentication
-os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = key_path  # Set the environment variable
-
-credentials, _ = google.auth.default(
-    scopes=["https://www.googleapis.com/auth/cloud-platform"]
-)
-
-if credentials and credentials.valid:
-    # You are authenticated
-    pass
-else:
-    # Authenticate if not already authenticated
-    credentials.refresh(Request())
-
-
-import vertexai
-from vertexai.preview.language_models import TextGenerationModel
 def predict_large_language_model_sample(
     project_id: str,
     model_name: str,

@@ -1,9 +1,40 @@
+import os
+from google.oauth2 import service_account
+import google.auth
+from google.auth.transport.requests import Request
+
+os.environ["PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION"] = "python"
+# Specify the path to your JSON key file
+key_path = "D:/FYProject/annular-cogency-397714-32d3bfc578fc.json"
+
+# Load the credentials
+credentials = service_account.Credentials.from_service_account_file(key_path)
+
+# Use the credentials for authentication
+os.environ["GOOGLE_APPLICATION_CREDENTIALS"] = key_path  # Set the environment variable
+
+credentials, _ = google.auth.default(
+    scopes=["https://www.googleapis.com/auth/cloud-platform"]
+)
+
+if credentials and credentials.valid:
+    # You are authenticated
+    pass
+else:
+    # Authenticate if not already authenticated
+    credentials.refresh(Request())
+
+
+
+
+
+
 import fitz  # PyMuPDF
 import vertexai
 from vertexai.preview.language_models import TextGenerationModel
 
-# Define the PDF file path
-resume_pdf_path = "/content/vssmerged1.pdf"  # Replace with your PDF file path
+# Apoorv
+resume_pdf_path = "D:\FYProject\Apoorv_Dandavate_CV.pdf"  # Replace with your PDF file path
 
 # Function to extract text from a PDF file using PyMuPDF
 def extract_text_from_pdf(pdf_path):
